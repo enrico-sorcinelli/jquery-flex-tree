@@ -26,10 +26,9 @@ jQuery Flex Tree has been tested with jQuery 1.12.4, 2.2.4 and 3.3.1.
 ```
 <div id="my-tree"></div>
 <script type="text/javascript">
-
 $( '#my-tree' ).flexTree( {
 	type: 'checkbox',
-	name: 'foo[]',
+	name: 'foo',
 	collapsed: false,
 	items: [
 		{
@@ -87,3 +86,8 @@ $( '#my-tree' ).flexTree( {
 </script>
 
 ```
+## Live examples
+
+* [Three state checkbox collapsable tree](https://codepen.io/enrico-sorcinelli/pen/Zmjegw)
+* [Radio button collapsable tree](https://codepen.io/enrico-sorcinelli/pen/qQyXZg)
+* [Text collapsable tree](https://codepen.io/enrico-sorcinelli/pen/yQqopK)
