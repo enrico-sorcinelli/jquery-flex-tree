@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>QUnit tests for jQuery Flex Tree</title>
+	<script type="text/javascript" src="lib/utils.js"></script>
+	<script type="text/javascript">
+
+		var cgi = new CGI();
+
+		load_css( { src: ( cgi.cdn != 0 ? 'https://code.jquery.com/' : ' ../../vendor/' ) + 'qunit/qunit-' + ( cgi.qunit || '2.6.2' ) + '.css' } );
+		load_js( { src: ( cgi.cdn != 0 ? 'https://code.jquery.com/' : ' ../../vendor/' )  + 'qunit/qunit-' + ( cgi.qunit || '2.6.2' ) + '.js' } );
+		load_js( {
+			src: ( cgi.cdn != 0 ? 'https://code.jquery.com/' : ' ../../vendor/jquery/' ) +  'jquery-' + ( cgi.jquery || '1.12.4' ) + ( cgi.min == 1 ? '.min' : '' ) + '.js',
+			onLoadHandler: function() {
+				build_jquery_links( {
+					versions: [ '1.12.4', '2.2.4', '3.3.1' ],
+					current: cgi.jquery || '1.12.4',
+					cdn: cgi.cdn
+				} )
+			}
+		} );
+
+	</script>
+	<link rel="stylesheet" type="text/css" href="../../src/css/flex-tree.css">
+</head>
+
+<body>
+
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+
+<script type="text/javascript">
+
+	load_js( { src: '../../src/js/flex-tree.js' } );
+	load_js( { src: 'tests.js' } );
+
+</script>
+
+<form method="post" id="flex-tree-form">
+	<div id="flex-tree"></div>
+</form>
+
+</body>
+
+</html>

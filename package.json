@@ -1,0 +1,21 @@
+{
+	"name": "flex-tree",
+	"version": "1.0.0",
+	"title": "jQuery Flex Tree",
+	"license": "GPL-3.0",
+	"devDependencies": {
+		"grunt": "1.0.2",
+		"grunt-contrib-jshint": "~1.0.0",
+		"grunt-contrib-nodeunit": "~1.0.0",
+		"grunt-contrib-uglify": "~2.0.0",
+		"grunt-contrib-cssmin": "~1.0.2",
+		"grunt-phpcs": "^0.4.0",
+		"load-grunt-tasks": "^4",
+		"eslint": "^5",
+		"grunt-eslint": "^21",
+		"stylelint": "^9",
+		"grunt-stylelint": "^0.10",
+		"stylelint-config-recommended": "^2",
+		"stylelint-config-standard": "^18"
+	}
+}
