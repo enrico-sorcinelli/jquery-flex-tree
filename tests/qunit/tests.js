@@ -76,8 +76,9 @@ $( document ).ready( function() {
 
 	QUnit.module( 'Checkbox Tree' );
 
-	QUnit.test( 'New collapsable tree', function( assert ) {
+	QUnit.test( 'Collapsable tree with three-state checkbox', function( assert ) {
 
+		$( '#flex-tree' ).append('<div>New collapsable tree with three-state checkbox</div>')
 		$( '#flex-tree' ).flexTree( {
 			type: 'checkbox',
 			name: flex_name,
@@ -200,14 +201,57 @@ $( document ).ready( function() {
 
 	} );
 
-	QUnit.module( 'Radio Tree' );
+	QUnit.test( 'Collapsable tree with checkbox and without control on parent', function( assert ) {
 
-	flex_name = 'radio-collapsable';
-	QUnit.test( 'New collapsable tree', function( assert ) {
+		flex_name = 'foo_2[]';
 
 		var $div = $( '<div/>' );
 		$( 'body' ).append( $div );
 
+		$div.append('<div>Collapsable tree with checkbox and without control on parent</div>')
+		$div.flexTree( {
+			type: 'checkbox',
+			name: flex_name,
+			collapsed: false,
+			collapsable: true,
+			items: items,
+			addControlOnParent: false
+		} );
+
+		assert.equal( true, true, 'Creating object' );
+
+	});
+
+	QUnit.test( 'Collapsable tree with checkbox and no three-state', function( assert ) {
+
+		flex_name = 'foo_3[]';
+
+		var $div = $( '<div/>' );
+		$( 'body' ).append( $div );
+
+		$div.append('<div>Collapsable tree with checkbox and and no three-state</div>')
+		$div.flexTree( {
+			type: 'checkbox',
+			name: flex_name,
+			collapsed: false,
+			collapsable: true,
+			items: items,
+			threeState: false
+		} );
+
+		assert.equal( true, true, 'Creating object' );
+	});
+
+	QUnit.module( 'Radio Tree' );
+
+	QUnit.test( 'Collapsable tree with radio', function( assert ) {
+
+		flex_name = 'radio-collapsable';
+
+		var $div = $( '<div/>' );
+		$( 'body' ).append( $div );
+
+		$div.append('<div>Collapsable tree with radio</div>')
 		$( $div ).flexTree( {
 			type: 'radio',
 			name: flex_name,
@@ -217,15 +261,16 @@ $( document ).ready( function() {
 		} );
 
 		assert.equal( true, true, 'Creating object' );
-
 	});
 
-	flex_name = 'radio-uncollasable';
-	QUnit.test( 'New uncollapsable tree', function( assert ) {
+	QUnit.test( 'Unollapsable tree with radio', function( assert ) {
+
+		flex_name = 'radio-uncollasable_2';
 
 		var $div = $( '<div/>' );
 		$( 'body' ).append( $div );
 
+		$div.append('<div>Unollapsable tree with radio</div>')
 		$( $div ).flexTree( {
 			type: 'radio',
 			name: flex_name,
@@ -240,11 +285,12 @@ $( document ).ready( function() {
 
 	QUnit.module( 'Plain text' );
 
-	QUnit.test( 'New plain text tree', function( assert ) {
+	QUnit.test( 'Collapsable tree plain text', function( assert ) {
 
 		var $div = $( '<div/>' );
 		$( 'body' ).append( $div );
 
+		$div.append('<div>Collapsable tree plain  text</div>')
 		$( $div ).flexTree( {
 			name: flex_name,
 			collapsed: false,
@@ -255,11 +301,12 @@ $( document ).ready( function() {
 		assert.equal( true, true, 'Creating object' );
 	});
 
-	QUnit.test( 'New plain text tree', function( assert ) {
+	QUnit.test( 'Uncollapsable tree plain text', function( assert ) {
 
 		var $div = $( '<div/>' );
 		$( 'body' ).append( $div );
 
+		$div.append('<div>Uncollapsable tree plain text</div>')
 		$( $div ).flexTree( {
 			name: flex_name,
 			collapsed: false,
