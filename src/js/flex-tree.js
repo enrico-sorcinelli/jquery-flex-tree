@@ -1,7 +1,7 @@
 /**
  * @file This file contains jQuery Flex Tree
  * @author Enrico Sorcinelli
- * @version 1.1.0
+ * @version 1.2.0
  * @title jQuery plugin for interactive trees
  */
 
@@ -9,16 +9,18 @@
  * jQuery plugin for builfing interactive tree.
  *
  * @param {object}  args
- * @param {array}   args.items                   - Tree items. Each item should be an object with follwing keys:
- *                                                 `label`, `value`, `id`, `checked` and `name`.
- * @param {boolean} [args.build=true]            - Build html structure.
- * @param {object}  [args.targetElement=$(this)] - jQuery target element object.
- * @param {boolean} [args.debug=false]           - Debug mode.
- * @param {string}  [args.type]                  - Type of `<input>`. Default to `undefined` (no input controls).
+ * @param {array}   args.items                     - Tree items. Each item should be an object with follwing keys:
+ *                                                   `label`, `value`, `id`, `checked` and `name`.
+ * @param {boolean} [args.build=true]              - Build html structure.
+ * @param {object}  [args.targetElement=$(this)]   - jQuery target element object.
+ * @param {boolean} [args.debug=false]             - Debug mode.
+ * @param {string}  [args.type]                    - Type of `<input>`. Default to `undefined` (no input controls).
  * @param {string}  [args.name=flex_tree]          - Name of `input` elements.
- * @param {string}  [args.className=flex-tree]   - Class name widget.
- * @param {boolean} [args.collapsable=true]      - Make tree collapsable.
- * @param {boolean} [args.collapsed=false]       - Collapsed tree on load.
+ * @param {string}  [args.className=flex-tree]     - Class name widget.
+ * @param {boolean} [args.collapsable=true]        - Make tree collapsable.
+ * @param {boolean} [args.collapsed=false]         - Collapsed tree on load.
+ * @param {boolean} [args.addControlOnParent=true] - Add radio/checkbox on parent item.
+ * @param {boolean} [args.threeState=true]        - Enable three state behavior with checkboxes.
  *
  * @return object
  */
@@ -31,7 +33,7 @@
 		// Default arguments.
 		args = $.extend( true, {
 			id: undefined,
-			targetElement: $(this),
+			targetElement: $( this ),
 			type: undefined,
 			debug: false,
 			name: 'flex_tree',
@@ -39,11 +41,18 @@
 			className: 'flex-tree',
 			buildTree: true,
 			collapsed: false,
-			collapsable: true
+			collapsable: true,
+			addControlOnParent: true,
+			threeState: true
 		}, defaults, args );
 
 		if ( false === args.collapsable ) {
 			args.collapsed = false;
+		}
+
+		// No control on parents turn off three-state.
+		if ( false === args.addControlOnParent ) {
+			args.threeState = false;
 		}
 
 		var $root;
@@ -65,7 +74,9 @@
 					items: {},
 					ul: $root,
 					collapsed: false,
-					collapsable: true
+					collapsable: true,
+					addControlOnParent: true,
+					threeState: true
 				}, args );
 				$.each( args.items, function( idx, el ) {
 
@@ -75,9 +86,10 @@
 						var $li = $( '<li/>' );
 
 						// Only for input checkbox.
-						if ( 'checkbox' === args.type ) {
+						if ( args.addControlOnParent && ( 'checkbox' === args.type || 'radio' === args.type ) ) {
 							$li.append( $( '<input/>' )
 								.attr( 'type', args.type )
+								.attr( 'name', ( 'radio' === args.type || false === args.threeState ) ? ( el.name || args.name ) : el.name )
 								.attr( 'name', el.name )
 								.attr( 'value', el.value )
 								.attr( 'class', 'node' )
@@ -105,7 +117,9 @@
 							ul: $ul,
 							collapsed: args.collapsed,
 							collapsable: args.collapsable,
-							type: args.type
+							type: args.type,
+							addControlOnParent: args.addControlOnParent,
+							threeState: args.threeState
 						} );
 					}
 					// Create leaf element.
@@ -151,8 +165,8 @@
 			} );
 		}
 
-		// Events only for input checkbox.
-		if ( 'checkbox' === args.type ) {
+		// Events only for input checkbox three-state enabled.
+		if ( args.threeState && 'checkbox' === args.type ) {
 
 			// Check all/none over node item.
 			$( 'input[type="checkbox"].node', $root ).on( 'click', function( e ) {
@@ -227,7 +241,6 @@
 			$( 'input[type="checkbox"].leaf', $root ).each( function() {
 				check_all_checkbox.apply( this );
 			} );
-
 		}
 
 	};
