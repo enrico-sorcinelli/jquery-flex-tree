@@ -8,8 +8,9 @@ jQuery Flex Tree is a lightweight jQuery plugin that provides creation of intera
 
 jQuery Flex Tree is extendable and skinnable.
 
-## Getting started
+jQuery Flex Tree has been tested with jQuery 1.12.4, 2.2.4 and 3.5.1.
 
+## Getting started
 
 ### Include library files
 
@@ -17,9 +18,27 @@ jQuery Flex Tree is extendable and skinnable.
 <script type="text/javascript" src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <link rel="stylesheet" type="text/css" href="flex-tree.min.css">
 <script type="text/javascript" src="flex-tree.min.js"></script>
-```
 
-jQuery Flex Tree has been tested with jQuery 1.12.4, 2.2.4 and 3.3.1.
+<div id="my-tree"></div>
+<script type="text/javascript">
+$( '#my-tree' ).flexTree( options );
+</script>
+```
+### Arguments
+
+|Name|Type|Default|Description|
+|---|---|---|---|
+|`items`|_array_|`undefined`|Tree items. Each item should be an object with following keys: `label`, `value`, `checked` (optional), `id` (optional), and `name` (optional).|
+|`build`|_boolean_|`true`|Build HTML structure.|
+|`targetElement`|_object_|`$(this)`|jQuery target element object.|
+|`debug`|_boolean_|`false`|Debug mode.|
+|`type`|_string_|`undefined`|Type of `<input>`. Possible values are: `checkbox`, `radio`. Default to plain text.|
+|`name`|_string_|`flex_tree`|Name of `<input>` elements.|
+|`className`|_string_|`flex-tree`|Class name widget.|
+|`collapsable`|_boolean_|`true`|Make tree collapsable.|
+|`collapsed`|_boolean_|`false`|Collapsed tree on load|
+|`addControlOnParent`|_boolean_|`true`|Add radio/checkbox `<input>` element also on parent item.|
+|`threeState`|_boolean_|`true`|Enable three state behavior with checkboxes.|
 
 ### Creating tree
 
@@ -84,8 +103,8 @@ $( '#my-tree' ).flexTree( {
 	]
 } );
 </script>
-
 ```
+
 ## Live examples
 
 * [Three state checkbox collapsable tree](https://codepen.io/enrico-sorcinelli/pen/Zmjegw)
