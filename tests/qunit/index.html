@@ -16,15 +16,15 @@
 			src: ( cgi.cdn != 0 ? 'https://code.jquery.com/' : ' ../../vendor/jquery/' ) +  'jquery-' + ( cgi.jquery || '1.12.4' ) + ( cgi.min == 1 ? '.min' : '' ) + '.js',
 			onLoadHandler: function() {
 				build_jquery_links( {
-					versions: [ '1.12.4', '2.2.4', '3.3.1' ],
+					versions: [ '1.12.4', '2.2.4', '3.3.1', '3.5.1' ],
 					current: cgi.jquery || '1.12.4',
 					cdn: cgi.cdn
 				} )
 			}
 		} );
+		load_css( { src: cgi.min == 1 ? '../../dist/flex-tree.min.css' : '../../src/css/flex-tree.css' } );
 
 	</script>
-	<link rel="stylesheet" type="text/css" href="../../src/css/flex-tree.css">
 </head>
 
 <body>
@@ -34,7 +34,7 @@
 
 <script type="text/javascript">
 
-	load_js( { src: '../../src/js/flex-tree.js' } );
+	load_js( { src: cgi.min == 1 ? '../../dist/flex-tree.min.js' : '../../src/js/flex-tree.js' } );
 	load_js( { src: 'tests.js' } );
 
 </script>
