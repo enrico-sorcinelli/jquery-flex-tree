@@ -14,7 +14,7 @@ module.exports = function(grunt) {
 		// Minify .js files.
 		uglify: {
 			options: {
-				banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+				banner: '/*! <%= pkg.title %> <%= pkg.version%> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
 			},
 			build: {
 				src: '<%= dirs.js %>/<%= pkg.name %>.js',
