@@ -90,7 +90,6 @@
 							$li.append( $( '<input/>' )
 								.attr( 'type', args.type )
 								.attr( 'name', ( 'radio' === args.type || false === args.threeState ) ? ( el.name || args.name ) : el.name )
-								.attr( 'name', el.name )
 								.attr( 'value', el.value )
 								.attr( 'class', 'node' )
 								.attr( 'id', el.id )
