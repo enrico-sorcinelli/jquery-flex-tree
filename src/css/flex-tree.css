@@ -2,6 +2,7 @@
 ul.flex-tree,
 ul.flex-tree ul {
 	list-style: none;
+	padding-left: 34px;
 }
 
 ul.flex-tree label {
