@@ -1,7 +1,7 @@
 /**
  * @file This file contains jQuery Flex Tree
  * @author Enrico Sorcinelli
- * @version 1.2.0
+ * @version 1.2.2
  * @title jQuery plugin for interactive trees
  */
 
