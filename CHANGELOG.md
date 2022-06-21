@@ -5,7 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [1.2.2] - 2022-06-21
- - Added `flex-tree-minimal.css` skin (it doesn't ovverride radio/checkbox style).
+### Added
+ - _flex-tree-minimal.css_ skin (it doesn't ovverride radio/checkbox style).
 
 ## [1.2.1] - 2022-06-17
 ### Added
